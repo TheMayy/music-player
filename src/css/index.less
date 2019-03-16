@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    body {
+        font-size: 12px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        .wrapper {
+            // vw,vh为相对单位，相对于视窗大小，100vw相当于100%
+            width: 100vw;
+            height: 100vh;
+            padding-top: 60px;
+            // 设置padding后会出现滚动条，变成怪异盒模型以消除滚动条
+            box-sizing:border-box;
+            // 背景上添加一层阴影层
+            background-color:rgba(0,0,0,0.2);
+            .song-img {
+                // 圆形封面，先设置正方形
+                // 宽度设置为70%，高度为0，高度由padding撑开构成正方形
+                width: 70%;
+                height: 0;
+                // padding的取值（无论宽还是高）是根据父级的宽度计算的
+                padding-top: 70%;
+                // border: 1px solid black;
+                margin: 0 auto;
+                position: relative;
+                .img-box {
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    bottom:0;
+                    right:0;
+                    border-radius: 50%;
+                    background-color: #000;
+                    display:flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        width: 75%;
+                        height: 75%;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            .song-info {
+                margin-top: 20px;
+                width: 100%;
+                text-align: center;
+                height: 126px;
+                // border: 1px solid black;
+                color: #fff;
+                .song-name {
+                    font-size:24px;
+                    line-height: 36px;
+                    margin-bottom: 8px;
+                }
+            }
+            .pro {
+                display: flex;
+                
+                .cur-time,.all-time {
+                    width: 60px;
+                    height: 40px;
+                    // border: 1px solid black;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 40px;
+                }
+                .pro-wrap {
+                    // border: 1px solid black;
+                    flex: 1;
+                    position: relative;
+                    overflow: hidden;
+                    .pro-bottom {
+                        position: absolute;
+                        top: 20px;
+                        width: 100%;
+                        border: 1px solid #333;
+                        border-radius: 10px;
+                    }
+                    .pro-top {
+                        position: absolute;
+                        top: 19px;
+                        // left: 2px;
+                        height: 2px;
+                        background: #fff;
+                        padding-left: 100%;
+                        border: 1px solid #fff;
+                        transform: translateX(-100%);
+                        .slider {
+                            position: absolute;
+                            top: -2px;
+                            width: 5px;
+                            height: 5px;
+                            background: #fff;
+                            border: 1px solid #fff;
+                            border-radius: 100%;
+                        }
+                    }
+                }
+            }
+            .control {
+                width: 100%;
+                height: 60px;
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.6);
+                display: flex;
+                .btn {
+                    flex:1;
+                    height: 100%;
+                    // border: 1px solid black;
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+                .like {
+                    background-image:url(../img/icon-like.png);
+                    // 通过点击后添加修改class来控制图标变化
+                    &.liking {
+                        background-image:url(../img/icon-like-solid.png)
+                    }
+                }
+                .prev {
+                    background-image:url(../img/icon-prev.png);
+                    cursor: pointer;
+                }
+                .play {
+                    background-image:url(../img/icon-play.png);
+                    &.playing{                          // 同时给playing这个class名设置属性
+                        background-image:url(../img/icon-pause.png)
+                    }
+                }
+                .next {
+                    background-image:url(../img/icon-next.png)
+                }
+                .list {
+                    background-image:url(../img/icon-list.png)
+                }
+                
+            }
+            .list-t {
+                display: none;
+                position: absolute;
+                border-radius: 10px 10px 0 0;
+                // z-index: -1;
+                margin-bottom: 60px;
+                background-color: #fff;
+                // border: 1px solid black;
+                width: 100%;
+                bottom: 0px;
+                li {
+                    padding-left: 10px;
+                    padding-top: 10px;
+                    border-top: 1px solid #333;
+                    height: 30px;
+                    font-size: 16px;
+                    &.playing {
+                        color: red;
+                        font-weight: bold;
+                    }
+                }
+                li:nth-child(1) {
+                    border:none;
+                }
+            }
+        }
+    }
+}
